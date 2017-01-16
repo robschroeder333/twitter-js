@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dnllowe/fullstack-academy-twitter/issues"
   },
-  "homepage": "https://github.com/dnllowe/fullstack-academy-twitter#readme"
+  "homepage": "https://github.com/dnllowe/fullstack-academy-twitter#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
