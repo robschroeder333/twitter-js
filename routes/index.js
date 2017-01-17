@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const tweetBank = require('../tweetBank');
 const fs = require('fs');
 
 router.get('/', (req, res) => {

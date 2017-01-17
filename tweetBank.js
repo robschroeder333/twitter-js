@@ -25,9 +25,9 @@ const getFakeName = function() {
 
 const getFakeTweet = function() {
   const awesome_adj = ['awesome', 'breathtaking', 'amazing', 'funny', 'sweet', 'cool', 'wonderful', 'mindblowing', 'impressive'];
-  return "Fullstack Academy is " + randArrayEl(awesome_adj) + "! The instructors are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
+  return "Daniel and Rob are " + randArrayEl(awesome_adj) + "! They are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
 };
-module.exports = {add: add, list: list, find: find};
+module.exports = {add: add, list: list, find: find, data: data};
 
 for (let i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
