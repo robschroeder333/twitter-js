@@ -4,8 +4,6 @@ const app = express();
 const router = require('./routes');
 const PORT = 3000;
 
-app.use('/', router);
-
 nunjucks.configure('views', {
   // autoescape: true,
   express: app,
@@ -13,6 +11,10 @@ nunjucks.configure('views', {
   noCache: true
 });
 
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+
+app.use('/', router);
 app.listen(PORT, () => {
     console.log('Server listening.');
 });
@@ -28,5 +30,4 @@ app.use('/', (req, res) => {
   res.send('sorry, you have not entered a correct url');
 });
 
-app.set('view engine', 'html');
-app.engine('html', nunjucks.render);
+

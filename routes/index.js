@@ -13,6 +13,7 @@ router.get('/news', (req, res) => {
 });
 
 router.get('/index.html', (req, res) => {
+    console.log("In router for index.html");
   const context = {
     title: 'An Example',
     people: [
@@ -21,9 +22,7 @@ router.get('/index.html', (req, res) => {
       {name: 'Samurai Jack'}
     ]
   };
-  res.render('index', {title: 'An Example', people: context.people}, (err, output) => {
-    console.log(err);
-  }); 
+  res.render('index', {title: 'An Example', people: context.people}); 
 });
 
 module.exports = router;
