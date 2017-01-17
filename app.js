@@ -14,14 +14,15 @@ nunjucks.configure('views', {
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 
-app.use('/', router);
-app.listen(PORT, () => {
-    console.log('Server listening.');
-});
-
 app.use('/', (req, res, next) => {
   console.log(`client is using: ${req.method} ${req.url}`);
   next();
+});
+
+app.use('/', router);
+
+app.listen(PORT, () => {
+    console.log('Server listening.');
 });
 
 app.use('/', (req, res) => {
@@ -29,5 +30,3 @@ app.use('/', (req, res) => {
   console.log(`status code: ${res.statusCode}`);
   res.send('sorry, you have not entered a correct url');
 });
-
-
