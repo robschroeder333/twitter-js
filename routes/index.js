@@ -9,9 +9,22 @@ const fs = require('fs');
 //   console.log(`status code: ${res.statusCode}`);
 // });
 
+tweetBank.add("Rob", "Testing");
+tweetBank.add("Rob", "1..2");
+tweetBank.add("Rob", "1, 2, 3.");
+tweetBank.add("Rob", "Ok. Enough tweeting for today.");
+
+
 router.get('/', (req, res) => {
   let tweets = tweetBank.list();
   res.render('index', { tweets: tweets });
+  console.log(`status code: ${res.statusCode}`);
+});
+
+router.get('/user/:name', (req, res) => {
+  let name = req.params.name;
+  let list = tweetBank.find({name: name});
+  res.render('index', { tweets: list });
   console.log(`status code: ${res.statusCode}`);
 });
 
