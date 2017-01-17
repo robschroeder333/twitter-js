@@ -1,6 +1,18 @@
 const express = require('express');
+const nunjucks = require('nunjucks');
 const app = express();
+const router = require('./routes');
 const PORT = 3000;
+
+app.use('/', router);
+
+nunjucks.configure('views', {
+  // autoescape: true,
+  express: app,
+  watch: true,
+  noCache: true
+});
+
 app.listen(PORT, () => {
     console.log('Server listening.');
 });
@@ -10,19 +22,11 @@ app.use('/', (req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.write('Welcome to "Better." Our new version of twitter.');
-  res.send();
-  console.log(`status code: ${res.statusCode}`);
-});
-
-app.get('/news', (req, res) => {
-  res.send('Extra! Extra! Read all about it!');
-  console.log(`status code: ${res.statusCode}`);
-});
-
 app.use('/', (req, res) => {
   res.statusCode = 404;
   console.log(`status code: ${res.statusCode}`);
   res.send('sorry, you have not entered a correct url');
 });
+
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
