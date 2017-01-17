@@ -17,27 +17,29 @@ router.get('/layout.html', (req, res) => {
   res.render('layout', {})
 });
 
+/* FOR REFERENCE (If express.static didn't exist)
+
 router.get('/stylesheets/styles.css', (req, res) => {
-  console.log("Looking for our stylsheet!");
+  console.log("Looking for OUR stylsheet!");
   fs.readFile('./public/stylesheets/styles.css', function(err, data){
     if(err)throw err;
-    console.log(data.toString());
-    res.send();
+    res.contentType('text/css');
+    res.send(data.toString());
   });
 });
+*/
 
-
-// router.get('/index.html', (req, res) => {
-//     console.log('In router for index.html');
-//   const context = {
-//     title: 'An Example',
-//     people: [
-//       {name: 'Goku'},
-//       {name: 'Vegeta'},
-//       {name: 'Samurai Jack'}
-//     ]
-//   };
-//   res.render('index', {title: 'An Example', people: context.people});
-// });
+router.get('/index.html', (req, res) => {
+    console.log('In router for index.html');
+  const context = {
+    title: 'An Example',
+    people: [
+      {name: 'Goku'},
+      {name: 'Vegeta'},
+      {name: 'Samurai Jack'}
+    ]
+  };
+  res.render('index', {title: 'An Example', people: context.people});
+});
 
 module.exports = router;

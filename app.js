@@ -13,6 +13,7 @@ nunjucks.configure('views', {
 
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
+app.use(express.static('public'));
 
 app.use('/', (req, res, next) => {
   console.log(`client is using: ${req.method} ${req.url}`);
