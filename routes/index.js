@@ -3,9 +3,15 @@ const router = express.Router();
 const tweetBank = require('../tweetBank');
 const fs = require('fs');
 
+// router.get('/', (req, res) => {
+//   res.write('Welcome to "Better." Our new version of twitter.');
+//   res.send();
+//   console.log(`status code: ${res.statusCode}`);
+// });
+
 router.get('/', (req, res) => {
-  res.write('Welcome to "Better." Our new version of twitter.');
-  res.send();
+  let tweets = tweetBank.list();
+  res.render('index', { tweets: tweets });
   console.log(`status code: ${res.statusCode}`);
 });
 
